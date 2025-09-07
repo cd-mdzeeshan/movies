@@ -21,11 +21,17 @@ export default function MovieList({ initialMovies }) {
       setLoading(true);
 
       const url = query
-        ? `/search/movie?query=${query}&page=${page}`
-        : `/discover/movie?page=${page}`;
+        ? `/api/movies?query=${encodeURIComponent(query)}&page=${page}`
+        : `/api/movies?page=${page}`;
 
-   
-      const{ data} = await tmdb.get(url);
+      const res = await fetch(url);
+
+      let data = { results: [], total_pages: 1 };
+      try {
+        data = await res.json();
+      } catch (err) {
+        console.error("Failed to parse JSON:", err);
+      }
 
       setMovies(data.results);
       setTotalPages(data.total_pages);
