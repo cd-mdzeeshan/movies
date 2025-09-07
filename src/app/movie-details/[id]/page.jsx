@@ -5,7 +5,7 @@ const page = async ({ params }) => {
   const id = await params.id;
   console.log(id);
   const { data } = await tmdb.get(`/movie/${id}`);
-  console.log(data);
+//   console.log(data);
   const stars = Math.round(data.vote_average / 2);
   return (
     <section>
