@@ -2,7 +2,7 @@ import tmdb from "@/lib/tmdb";
 import React from "react";
 
 const page = async ({ params }) => {
-  const id = await params.id;
+  const {id} = await params;
   console.log(id);
   const { data } = await tmdb.get(`/movie/${id}`);
 //   console.log(data);
@@ -14,20 +14,20 @@ const page = async ({ params }) => {
         <div className="w-full h-[500px] relative">
           <img
             src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full sm:block hidden"
             alt="not found"
           />
-          <div className="absolute inset-0 bg-black/70 h-full w-full flex items-center justify-center"></div>
+          <div className="absolute inset-0 bg-black/70 h-full w-full flex items-center justify-center sm:flex-row flex-col"></div>
           <div className="max-w-7xl mx-auto relative">
-            <div className=" absolute -bottom-40 left-10 flex gap-5 w-full">
-              <div className="w-[370px] h-[400px]">
+            <div className="sm:absolute -bottom-40 left-10 flex sm:flex-row flex-col gap-5 w-full">
+              <div className="sm:w-[370px] sm:h-[400px]">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                   className="object-cover w-full h-full"
                   alt="not found"
                 />
               </div>
-              <div className="space-y-1 pr-10 flex flex-col items-start  justify-center w-full h-full text-white mt-14">
+              <div className="space-y-1 sm:pr-10 flex flex-col sm:items-start items-center  justify-center w-full h-full text-white mt-14 sm:px-0 px-3">
                 <div className="flex items-center gap-2">
                   <p className="text-2xl font-bold">
                     {" "}
@@ -65,8 +65,8 @@ const page = async ({ params }) => {
                   </div>
                   <p>Audience Rating</p>
                 </div>
-                <div className="flex mt-5 gap-5">
-                  <p className="max-w-2xl py-5">{data.overview}</p>
+                <div className="flex mt-5 gap-5 sm:flex-row flex-col">
+                  <p className="max-w-2xl py-5 sm:text-start text-center">{data.overview}</p>
                   <div className="bg-gray-800 p-5 rounded space-y-3 w-full">
                     <h3 className="text-xl font-bold">Details</h3>
                     <div>

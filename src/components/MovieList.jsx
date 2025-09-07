@@ -63,7 +63,7 @@ export default function MovieList({ initialMovies }) {
         <p className="text-center text-white">Loading...</p>
       ) : (
         <>
-          <div className="grid grid-cols-4 gap-4 gap-y-5">
+          <div className="grid sm:grid-cols-4 gap-4 gap-y-5">
             {movies?.length > 0 ? (
               movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
             ) : (
